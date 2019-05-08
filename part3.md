@@ -1,7 +1,7 @@
 Creating Metrics with Python
 ==
 
-##The python Prometheus package
+## The python Prometheus package
 
 There is a python package called `prometheus_client` that can be pip installed. 
 
@@ -9,11 +9,11 @@ https://github.com/prometheus/client_python
 
 ```pip install prometheus_client```
 
-##Setting up basic metrics
+## Setting up basic metrics
 
 Using `prometheus_client`, we can create metric objects that prometheus can scrape. All four metric types can be created.
 
-####Counter:
+#### Counter:
 ```python
 from prometheus_client import Counter
 c = Counter('num_requests', 'The number of requests.')
@@ -22,7 +22,7 @@ c.inc(10) # Increments the counter by 10
 
 ```
 
-####Gauge:
+#### Gauge:
 ```python
 from prometheus_client import Gauge
 g = Gauge('memory_in_gb', 'The amount of memory remaining on this server in GB.')
@@ -32,14 +32,14 @@ g.set(6.3) # Sets the gauge to an exact value
 
 ```
 
-###Histogram:
+### Histogram:
 ```python
 from prometheus_client import Histogram
 h = Histogram('request_latency_seconds', 'Description of histogram')
 h.observe(2.5)    # Observe the number of seconds
 ```
 
-####Summary:
+#### Summary:
 ```python
 from prometheus_client import Summary
 s = Summary('request_latency_seconds', 'The request latency in seconds.')
@@ -49,7 +49,7 @@ s.observe(3.7)    # Observe the number of seconds
 Note: the python prometheus client cannot store quantile information yet. 
 
 
-##Adding labels
+## Adding labels
 Labels can also be added to metrics for easier querying. Labels will group together all data points with that given label.
 To add a label, it will be specified when the metric object is created:
 ```python
@@ -68,7 +68,7 @@ g.labels('server2').set(2.8)
 
 Later when we query the 'memory_in_gb' metric, we will have one gauge listing for each server we specified.
 
-##Generating metrics plaintext
+## Generating metrics plaintext
 
 In order to scrape and collect metrics, Prometheus needs the metrics to appear in a specific format. Example:
 ```

@@ -2,7 +2,7 @@ Configuring Prometheus to scrape metrics
 ===
 
 
-####Prometheus Config file
+#### Prometheus Config file
 In order for Prometheus to scrape and collect metrics, it needs a configuration file. This file will specify the locations it will scrape for mertrics. At the very basic level, Prometheus will scrape itself.
 
 This configuration file is written in YAML: 
@@ -24,7 +24,7 @@ The first thing we can specify is the interval of time between each scrape. The 
 
 Next we set up the scrape configs. Each job under the configs represents a target that Prometheus will scrape. In this example we only have one, which is the prometheus service itself. All we need to do is give the job a name and then provide an IP address where the plaintext is located.
 
-####Deploying Prometheus
+#### Deploying Prometheus
 To deploy Prometheus, we will be using Docker. Prometheus has its own official Docker image, so all we will need to do is tell it to use our config file.
 
 To make things easier, we will use docker-compose, which uses YAML:
