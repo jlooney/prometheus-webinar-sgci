@@ -1,0 +1,12 @@
+version: "2"
+services:
+  api:
+    image: jlooney/docker-stats-example
+    ports:
+        - "5000:5000"
+    volumes:
+      - /sys/fs/cgroup/memory/docker:/docker/memory
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    environment:
+      - DOCKER_API_VERSION=1.23
